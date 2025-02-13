@@ -32,6 +32,14 @@ class _MarketScreenState extends State<MarketScreen> {
     });
   }
 
+  void _viewDailyMarketList() {
+    // Navigate to daily market list page
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => DailyMarketListScreen()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     List<MarketItem> filteredItems = _selectedCategory == 'All'
@@ -64,6 +72,55 @@ class _MarketScreenState extends State<MarketScreen> {
             subtitle: Text('Category: ${item.category}, Price: ${item.price}, Date: ${item.date}'),
           );
         },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _viewDailyMarketList,
+        child: Icon(Icons.view_list),
+      ),
+    );
+  }
+}
+
+class DailyMarketListScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    // Dummy data for demonstration purposes
+    List<MarketItem> dailyItems = [
+      MarketItem(name: 'Rice', category: 'Groceries', price: 50.0, date: '2025-02-13'),
+      MarketItem(name: 'Vegetables', category: 'Groceries', price: 30.0, date: '2025-02-13'),
+    ];
+
+    return Scaffold(
+      appBar: AppBar(title: Text('Daily Market List')),
+      body: ListView.builder(
+        itemCount: dailyItems.length,
+        itemBuilder: (context, index) {
+          final item = dailyItems[index];
+          return ListTile(
+            title: Text(item.name),
+            subtitle: Text('Category: ${item.category}, Price: ${item.price}, Date: ${item.date}'),
+          );
+        },
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              decoration: InputDecoration(labelText: 'Manager Signature'),
+            ),
+            TextField(
+              decoration: InputDecoration(labelText: 'Marketer Signature'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // Logic to save signatures and lock the list
+              },
+              child: Text('Save and Lock'),
+            ),
+          ],
+        ),
       ),
     );
   }
