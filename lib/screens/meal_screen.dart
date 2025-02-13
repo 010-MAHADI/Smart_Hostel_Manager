@@ -29,6 +29,10 @@ class _MealScreenState extends State<MealScreen> {
     // Code to add a new meal entry
   }
 
+  void _addGuestMeal() {
+    // Code to add a guest meal entry
+  }
+
   void _generateMonthlyReport() {
     // Code to generate monthly report
   }
@@ -53,6 +57,11 @@ class _MealScreenState extends State<MealScreen> {
           FloatingActionButton(
             onPressed: _addMeal,
             child: Icon(Icons.add),
+          ),
+          SizedBox(height: 10),
+          FloatingActionButton(
+            onPressed: _addGuestMeal,
+            child: Icon(Icons.person_add),
           ),
           SizedBox(height: 10),
           FloatingActionButton(
