@@ -37,6 +37,24 @@ class DatabaseHelper {
         description TEXT
       )
     ''');
-    // Add other tables for meals, market items, etc.
+    await db.execute('''
+      CREATE TABLE meals (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        date TEXT,
+        breakfast INTEGER,
+        lunch INTEGER,
+        dinner INTEGER
+      )
+    ''');
+    await db.execute('''
+      CREATE TABLE market_items (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT,
+        category TEXT,
+        price REAL,
+        date TEXT
+      )
+    ''');
   }
 }
+
