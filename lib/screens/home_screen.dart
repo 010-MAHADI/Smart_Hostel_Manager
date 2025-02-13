@@ -3,6 +3,7 @@ import 'member_screen.dart';
 import 'meal_screen.dart';
 import 'market_screen.dart';
 import 'summary_screen.dart';
+import 'data_backup_screen.dart';  // Add this import
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -49,9 +50,16 @@ class HomeScreen extends StatelessWidget {
               },
               child: Text('Summary'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/backup');
+              },
+              child: Text('Backup & Restore'),
+            ),
           ],
         ),
       ),
     );
   }
 }
+
